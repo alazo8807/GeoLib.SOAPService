@@ -15,6 +15,21 @@ namespace GeoLib.Services
 			_stateRepo = new StateRepository();
 		}
 
+		public GeoManager(IZipCodeRepository zipCodeRepo)
+		{
+			_zipCodeRepo = zipCodeRepo;
+		}
+
+		public GeoManager(IStateRepository stateRepo)
+		{
+			_stateRepo = stateRepo;
+		}
+
+		public GeoManager(IZipCodeRepository zipCodeRepo, IStateRepository stateRepo) : this(zipCodeRepo)
+		{
+			_stateRepo = stateRepo;
+		}
+
 		public ZipCodeData GetZipInfo(string zip)
 		{
 			ZipCodeData zipCodeData = null;
