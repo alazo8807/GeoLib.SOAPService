@@ -20,7 +20,7 @@ namespace GeoLib.Client
 		{
 			if (txtZipCode.Text != "")
 			{
-				GeoClient proxy = new GeoClient();
+				GeoClient proxy = new GeoClient("tcpEP");	//Pass tcpEP or httpEP
 
 				ZipCodeData data = proxy.GetZipInfo(txtZipCode.Text);
 				if (data != null)

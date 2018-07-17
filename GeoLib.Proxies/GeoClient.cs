@@ -6,6 +6,11 @@ namespace GeoLib.Proxies
 {
 	public class GeoClient : ClientBase<IGeoService>, IGeoService
 	{
+		public GeoClient(string endpointName) 
+			: base(endpointName)
+		{
+		}
+
 		public IEnumerable<string> GetStates(bool primaryOnly)
 		{
 			return Channel.GetStates(primaryOnly);
