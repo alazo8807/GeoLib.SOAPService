@@ -1,6 +1,9 @@
 ﻿using GeoLib.Contracts;
 using GeoLib.Proxies;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.Threading;
 using System.Windows;
 
@@ -35,6 +38,16 @@ namespace GeoLib.Client
 		{
 			if (txtState.Text != null)
 			{
+				EndpointAddress address = new EndpointAddress("net.tcp://localhost:8009/GeoService");
+				Binding binding = new NetTcpBinding();
+
+				GeoClient proxy = new GeoClient(binding, address);
+
+				IEnumerable<ZipCodeData> data = proxy.GetZips(txtState.Text);
+				if (data != null)
+				{
+					lstZips.ItemsSource = data;
+				}
 
 			}
 		}

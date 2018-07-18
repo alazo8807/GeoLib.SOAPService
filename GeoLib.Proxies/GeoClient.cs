@@ -1,6 +1,7 @@
 ﻿using GeoLib.Contracts;
 using System.Collections.Generic;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 
 namespace GeoLib.Proxies
 {
@@ -10,6 +11,12 @@ namespace GeoLib.Proxies
 			: base(endpointName)
 		{
 		}
+
+		public GeoClient(Binding binding, EndpointAddress address)
+			: base(binding, address)
+		{
+		}
+
 
 		public IEnumerable<string> GetStates(bool primaryOnly)
 		{
